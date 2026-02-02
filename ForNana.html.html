@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Nana 💙 | Valentine 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c2461, #1e3799, #4a69bd);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: default;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            z-index: 10;
+        }
+
+        header {
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .heart-icon {
+            color: #ff6b8b;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #74b9ff, #a29bfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .nana-name {
+            color: #74b9ff;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .message-card {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .message {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .message-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(to right, #0984e3, #6c5ce7);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.6);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(to right, #00b894, #00cec9);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .photo-frame {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 200px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .music-player {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .music-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #74b9ff;
+        }
+
+        .music-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .music-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .music-btn.playing {
+            background: linear-gradient(to right, #74b9ff, #a29bfe);
+            box-shadow: 0 0 20px rgba(116, 185, 255, 0.5);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Background music toggle */
+        .bg-music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(116, 185, 255, 0.9);
+            border: none;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bg-music-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .bg-music-toggle.muted {
+            background: rgba(255, 107, 139, 0.9);
+        }
+
+        /* YouTube Player Container */
+        .youtube-player {
+            display: none;
+            width: 100%;
+            height: 80px;
+            margin-top: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        #youtube-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Valentine question section */
+        .valentine-question {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .question-text {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #dfe6e9;
+        }
+
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 150px;
+            align-items: center;
+        }
+
+        /* Runaway button - FULLY ANIMATED */
+        #runaway-btn {
+            position: fixed;
+            padding: 15px 40px !important;
+            font-size: 1.2rem !important;
+            background: linear-gradient(to right, #e17055, #fdcb6e) !important;
+            z-index: 100;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            user-select: none;
+            white-space: nowrap;
+            animation: running 0.8s infinite;
+        }
+
+        #yesBtn {
+            position: relative;
+            z-index: 50;
+        }
+
+        /* Running animation for the button */
+        @keyframes running {
+            0%, 100% {
+                transform: scaleX(1) rotate(0deg);
+            }
+            25% {
+                transform: scaleX(-1) rotate(5deg);
+            }
+            50% {
+                transform: scaleX(1) rotate(0deg);
+            }
+            75% {
+                transform: scaleX(-1) rotate(-5deg);
+            }
+        }
+
+        /* Chinese Cats Design - SVG Based */
+        .cat-container {
+            position: fixed;
+            width: 140px;
+            height: 140px;
+            pointer-events: none;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .cat-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .cat-label {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 4px 10px;
+            border-radius: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .cat-container:hover .cat-label {
+            opacity: 1;
+        }
+
+        /* Hearts animation */
+        .heart {
+            position: fixed;
+            color: #ff6b8b;
+            font-size: 20px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .chase-effect {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(255, 107, 139, 0.6) 0%, rgba(255, 107, 139, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 2;
+            animation: chasePulse 0.8s ease-out forwards;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes chasePulse {
+            0% { 
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% { 
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes happyDance {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1.1); }
+            25% { transform: translateY(-15px) rotate(5deg) scale(1.15); }
+            75% { transform: translateY(-15px) rotate(-5deg) scale(1.15); }
+        }
+
+        @keyframes sadShake {
+            0%, 100% { transform: translateX(0) rotate(0deg) scale(0.9); }
+            25% { transform: translateX(-8px) rotate(-3deg) scale(0.9); }
+            75% { transform: translateX(8px) rotate(3deg) scale(0.9); }
+        }
+
+        .footer-note {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .message {
+                font-size: 1.2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .options {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .cat-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .youtube-player {
+                height: 60px;
+            }
+
+            .bg-music-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music Toggle Button -->
+    <button class="bg-music-toggle" id="bgMusicToggle" onclick="toggleBackgroundMusic()">
+        <i class="fas fa-music"></i>
+    </button>
+
+    <!-- Background Music Playlist -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="https://open.spotify.com/track/0YRpSyqXdbYkKEVmXcSpMP" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <header>
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h1>Happy Valentine's Day, <span class="nana-name">Nana</span> 💙</h1>
+            <p class="subtitle">My First Valentine's Day & It's All For You</p>
+        </header>
+
+        <div class="card message-card">
+            <div class="message" id="message">
+                Nana, I have never met a person like you. Although we don't know each other to a great extent, I want to be able to stay by your side and shoulder all your emotions on me and let me take a step inside your world.
+            </div>
+            <div class="message-controls">
+                <button class="btn" onclick="nextMessage()">
+                    <i class="fas fa-arrow-right"></i> Next Message
+                </button>
+                <button class="btn btn-secondary" onclick="showValentineQuestion()">
+                    <i class="fas fa-heart"></i> Valentine's Question
+                </button>
+            </div>
+        </div>
+
+        <div class="gallery">
+            <div class="photo-frame">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczP6iKZPrsMGroCvWzJdJSvw2aY5zQMi41EHyvVSDmuzP0Gsp3Z1F8tl=w1908-h878-s-no-gm?authuser=0" alt="My number 13">
+            </div>
+            <div class="photo-frame">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOXQW2xpo8-D_UyDIJbcOuQbBd5BqY3Pgl6Egy6NbyNkajWQ98vzL82=w1320-h688-s-no-gm?authuser=0" alt="locked in when playing cls with nana for first time">
+            </div>
+            <div class="photo-frame">
+                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOBoJC6JNAVl8z85YaYBEQBmV8GoIzNjW4qtO-PLc4-MK-BsgoOrzHD=w1908-h878-s-no-gm?authuser=0" alt="sleepy head">
+            </div>
+        </div>
+
+        <div class="music-player">
+            <div class="music-title">🎵 Our Valentine's Playlist</div>
+            <div class="music-controls">
+                <button class="music-btn" id="song-0-btn" onclick="playSong(0)" title="Chest Pain - Malcolm Todd">
+                    <i class="fas fa-play"></i>
+                </button>
+                <button class="music-btn" id="song-1-btn" onclick="playSong(1)" title="Scary Love - Neighbourhood">
+                    <i class="fas fa-music"></i>
+                </button>
+                <button class="music-btn" id="song-2-btn" onclick="playSong(2)" title="Who Knows - Daniel Caesar">
+                    <i class="fas fa-headphones"></i>
+                </button>
+                <button class="music-btn" id="song-3-btn" onclick="playSong(3)" title="Love - Wave to Earth">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <button class="music-btn" id="stop-btn" onclick="stopMusic()">
+                    <i class="fas fa-pause"></i>
+                </button>
+            </div>
+            <div id="now-playing" style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;"></div>
+            <div class="youtube-player" id="youtube-player">
+                <iframe id="youtube-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>Believe it or not, this is my first Valentine's! I've never gifted or done something for people during Valentine's because we don't usually celebrate, so hehehe sorry if it's not to your expectations.</p>
+            <p style="margin-top: 15px;">Nana, you work hard, study hard, you are very talented, pretty, beautiful, cute. Not even dictionary words can emphasize how much of a unique person you are. I'm grateful that I met you and it was a great start to this year of 2026.</p>
+        </div>
+    </div>
+
+    <!-- Hidden Valentine Question Section -->
+    <div id="valentineSection" class="valentine-question" style="display: none;">
+        <div class="question-text">Nana, will you be my Valentine? 💙</div>
+        <div class="options">
+            <button class="btn" id="yesBtn" onclick="yesAnswer()" style="padding: 15px 40px; font-size: 1.2rem;">
+                <i class="fas fa-heart"></i> Yes, absolutely!
+            </button>
+            <button class="btn" id="runaway-btn">
+                <i class="fas fa-running"></i> No, I don't want to be your Valentine
+            </button>
+        </div>
+        <div id="catsContainer"></div>
+    </div>
+
+    <!-- Yes Answer Section -->
+    <div id="yesAnswerSection" style="display: none; text-align: center; padding: 50px 20px;">
+        <div class="heart-icon" style="font-size: 4rem; margin-bottom: 20px;">
+            <i class="fas fa-heart"></i>
+        </div>
+        <h1 style="font-size: 3rem; margin-bottom: 20px;">YAY! 💙</h1>
+        <p style="font-size: 1.5rem; margin-bottom: 30px;">You've made this my best Valentine's Day ever!</p>
+        <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;">
+            Thank you for saying yes, Nana! I promise to make every day special for you, 
+            not just on Valentine's Day. You mean the world to me. 💕
+        </p>
+        <button class="btn" onclick="location.reload()" style="padding: 15px 30px;">
+            <i class="fas fa-redo"></i> Relive the moment
+        </button>
+    </div>
+
+    <script>
+        // songs from chenweitsho playlist hehehe
+        const songs = [
+            { 
+                title: "Chest Pain - Malcolm Todd", 
+                youtubeVideoId: "J8l_-fInnJo",
+                spotifyUrl: "https://open.spotify.com/track/0YRpSyqXdbYkKEVmXcSpMP"
+            },
+            { 
+                title: "Scary Love - Neighbourhood", 
+                youtubeVideoId: "x1zZUJCVvjc",
+                spotifyUrl: "https://open.spotify.com/track/3rwAe7VPKj8vU3JfVuYzPp"
+            },
+            { 
+                title: "Who Knows - Daniel Caesar", 
+                youtubeVideoId: "bVbT64gVZZo",
+                spotifyUrl: "https://open.spotify.com/track/4fJsnysjDLKKcVVxfMjAGo"
+            },
+            { 
+                title: "Love - Wave to Earth", 
+                youtubeVideoId: "5GCxvE9G2fU",
+                spotifyUrl: "https://open.spotify.com/track/3xIFRRf2e8wgJ5D0WKfz2A"
+            }
+        ];
+
+        // Personalized messages for Nana
+        const messages = [
+            "Nana, I have never met a person like you. Although we don't know each other to a great extent, I want to be able to stay by your side and shoulder all your emotions on me and let me take a step inside your world.",
+            "Nana, you work hard, study hard, you are very talented, pretty, beautiful, cute. Not even dictionary words can emphasize how much of a unique person you are.",
+            "I'm grateful that I met you and it was a great start to this year of 2026. Every moment with you feels special.",
+            "You have a light within you that brightens everything around you. I feel so lucky to have you in my life.",
+            "This is my first Valentine's Day celebration, and I couldn't imagine spending it with anyone but you. Thank you for being you, Nana."
+        ];
+
+        let currentMessageIndex = 0;
+        let currentSongIndex = -1;
+        let player = null;
+        let cats = [];
+        let noButtonPos = { x: 0, y: 0 };
+        let isValentineQuestionActive = false;
+        let bgMusicPlaying = false;
+
+        // Initialize YouTube Player
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-frame', {
+                height: '80',
+                width: '100%',
+                videoId: songs[0].youtubeVideoId,
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 1,
+                    'disablekb': 0,
+                    'fs': 1,
+                    'loop': 0,
+                    'modestbranding': 1,
+                    'playsinline': 1,
+                    'rel': 0,
+                    'showinfo': 0
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log("YouTube player is ready");
+        }
+
+        function onPlayerStateChange(event) {
+            const buttons = document.querySelectorAll('.music-btn');
+            buttons.forEach(btn => btn.classList.remove('playing'));
+            
+            if (event.data === YT.PlayerState.PLAYING) {
+                if (currentSongIndex >= 0) {
+                    document.getElementById(`song-${currentSongIndex}-btn`).classList.add('playing');
+                }
+            }
+        }
+
+        // Background Music Control
+        function toggleBackgroundMusic() {
+            const bgAudio = document.getElementById('bgAudio');
+            const bgMusicToggle = document.getElementById('bgMusicToggle');
+            
+            if (bgMusicPlaying) {
+                bgAudio.pause();
+                bgMusicToggle.classList.add('muted');
+                bgMusicToggle.innerHTML = '<i class="fas fa-music"></i>';
+                bgMusicPlaying = false;
+            } else {
+                bgAudio.play().catch(err => {
+                    console.log("Autoplay prevented by browser. User can click button to enable.");
+                });
+                bgMusicToggle.classList.remove('muted');
+                bgMusicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+                bgMusicPlaying = true;
+            }
+        }
+
+        // Auto-start background music on first interaction
+        document.addEventListener('click', function startBgMusic() {
+            if (!bgMusicPlaying) {
+                const bgAudio = document.getElementById('bgAudio');
+                bgAudio.play().then(() => {
+                    bgMusicPlaying = true;
+                    document.getElementById('bgMusicToggle').classList.remove('muted');
+                    document.getElementById('bgMusicToggle').innerHTML = '<i class="fas fa-volume-up"></i>';
+                }).catch(err => {
+                    console.log("Autoplay still prevented");
+                });
+            }
+        }, { once: true });
+
+        // Initialize the message display
+        document.getElementById('message').textContent = messages[currentMessageIndex];
+
+        function nextMessage() {
+            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+            document.getElementById('message').textContent = messages[currentMessageIndex];
+            createHearts(5);
+        }
+
+        // Function to play a song
+        function playSong(index) {
+            currentSongIndex = index;
+            const song = songs[index];
+            
+            // Update button states
+            document.querySelectorAll('.music-btn').forEach((btn, i) => {
+                btn.classList.remove('playing');
+            });
+            document.getElementById(`song-${index}-btn`).classList.add('playing');
+            
+            // Update the display
+            const nowPlaying = document.getElementById('now-playing');
+            nowPlaying.innerHTML = `
+                <strong>Now playing:</strong> ${song.title} 🎶
+                <a href="${song.spotifyUrl}" target="_blank" style="color: #74b9ff; text-decoration: none; margin-left: 10px;">
+                    <i class="fas fa-spotify"></i> Listen on Spotify
+                </a>
+            `;
+            
+            // Show the YouTube player
+            const youtubePlayerEl = document.getElementById('youtube-player');
+            youtubePlayerEl.style.display = 'block';
+            
+            // Load and play the video
+            if (player && player.loadVideoById) {
+                player.loadVideoById(song.youtubeVideoId);
+                setTimeout(() => {
+                    player.playVideo();
+                }, 300);
+            }
+            
+            // Create hearts for musical effect
+            createHearts(3);
+        }
+
+        function stopMusic() {
+            if (player && player.stopVideo) {
+                player.stopVideo();
+                document.querySelectorAll('.music-btn').forEach(btn => btn.classList.remove('playing'));
+                const nowPlaying = document.getElementById('now-playing');
+                nowPlaying.textContent = '⏸️ Music paused';
+            }
+        }
+
+        function showValentineQuestion() {
+            document.querySelector('.container').style.display = 'none';
+            document.getElementById('valentineSection').style.display = 'block';
+            isValentineQuestionActive = true;
+            
+            // Initialize the runaway button
+            initRunawayButton();
+            
+            // Create Chinese cats
+            createChineseCats();
+            
+            // Start tracking cursor
+            startCursorTracking();
+            
+            // Create hearts animation
+            createHearts(10);
+        }
+
+        // Create Chinese lucky cats with proper SVG
+        function createChineseCats() {
+            const catsContainer = document.getElementById('catsContainer');
+            catsContainer.innerHTML = '';
+            cats = [];
+            
+            const catConfigs = [
+                { isHappy: true, position: { x: '15%', y: '20%' }, label: '好运 (Good Luck)' },
+                { isHappy: true, position: { x: '25%', y: '75%' }, label: '开心 (Happy)' },
+                { isHappy: false, position: { x: '75%', y: '20%' }, label: '悲伤 (Sad)' },
+                { isHappy: false, position: { x: '85%', y: '75%' }, label: '别追我 (Don\'t Chase)' }
+            ];
+            
+            catConfigs.forEach((config, index) => {
+                const catContainer = document.createElement('div');
+                catContainer.className = 'cat-container';
+                catContainer.style.left = config.position.x;
+                catContainer.style.top = config.position.y;
+                
+                const catSvg = createCatSVG(config.isHappy);
+                catContainer.appendChild(catSvg);
+                
+                const label = document.createElement('div');
+                label.className = 'cat-label';
+                label.textContent = config.label;
+                catContainer.appendChild(label);
+                
+                catsContainer.appendChild(catContainer);
+                
+                cats.push({
+                    container: catContainer,
+                    svg: catSvg,
+                    isHappy: config.isHappy,
+                    index: index
+                });
+            });
+        }
+
+        // Create proper Chinese cat SVG
+        function createCatSVG(isHappy) {
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('viewBox', '0 0 200 240');
+            svg.setAttribute('class', 'cat-svg');
+            
+            if (isHappy) {
+                // Happy cat
+                svg.innerHTML = `
+                    <!-- Head -->
+                    <circle cx="100" cy="100" r="60" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    
+                    <!-- Ears -->
+                    <path d="M 60 50 L 40 10 L 75 40 Z" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    <path d="M 140 50 L 160 10 L 125 40 Z" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    
+                    <!-- Inner ears -->
+                    <path d="M 62 48 L 48 25 L 72 42 Z" fill="#FFA500"/>
+                    <path d="M 138 48 L 152 25 L 128 42 Z" fill="#FFA500"/>
+                    
+                    <!-- Eyes (happy) -->
+                    <ellipse cx="75" cy="85" rx="8" ry="12" fill="#333"/>
+                    <ellipse cx="125" cy="85" ry="12" rx="8" fill="#333"/>
+                    
+                    <!-- Happy eyes shine -->
+                    <circle cx="73" cy="82" r="3" fill="white"/>
+                    <circle cx="123" cy="82" r="3" fill="white"/>
+                    
+                    <!-- Mouth (smiling) -->
+                    <path d="M 100 110 Q 85 125 75 120" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M 100 110 Q 115 125 125 120" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Nose -->
+                    <circle cx="100" cy="105" r="5" fill="#FF69B4"/>
+                    
+                    <!-- Chin -->
+                    <path d="M 70 135 Q 100 155 130 135" fill="#FFED4E" stroke="#FFA500" stroke-width="2"/>
+                    
+                    <!-- Body -->
+                    <ellipse cx="100" cy="180" rx="45" ry="50" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    
+                    <!-- Paws -->
+                    <circle cx="70" cy="220" r="12" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                    <circle cx="130" cy="220" r="12" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                `;
+            } else {
+                // Sad cat
+                svg.innerHTML = `
+                    <!-- Head -->
+                    <circle cx="100" cy="100" r="60" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+                    
+                    <!-- Ears -->
+                    <path d="M 60 50 L 40 10 L 75 40 Z" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+                    <path d="M 140 50 L 160 10 L 125 40 Z" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+                    
+                    <!-- Inner ears -->
+                    <path d="M 62 48 L 48 25 L 72 42 Z" fill="#808080"/>
+                    <path d="M 138 48 L 152 25 L 128 42 Z" fill="#808080"/>
+                    
+                    <!-- Eyes (sad/worried) -->
+                    <ellipse cx="75" cy="85" rx="8" ry="12" fill="#333"/>
+                    <ellipse cx="125" cy="85" rx="8" ry="12" fill="#333"/>
+                    
+                    <!-- Sad eyes shine -->
+                    <circle cx="73" cy="88" r="2" fill="white"/>
+                    <circle cx="123" cy="88" r="2" fill="white"/>
+                    
+                    <!-- Mouth (sad) -->
+                    <path d="M 100 115 Q 85 105 75 110" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M 100 115 Q 115 105 125 110" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    
+                    <!-- Nose -->
+                    <circle cx="100" cy="105" r="5" fill="#999"/>
+                    
+                    <!-- Chin (droopy) -->
+                    <path d="M 70 140 Q 100 155 130 140" fill="#D3D3D3" stroke="#808080" stroke-width="2"/>
+                    
+                    <!-- Body -->
+                    <ellipse cx="100" cy="180" rx="45" ry="50" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+                    
+                    <!-- Paws -->
+                    <circle cx="70" cy="220" r="12" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+                    <circle cx="130" cy="220" r="12" fill="#C0C0C0" stroke="#808080" stroke-width="2"/>
+                    
+                    <!-- Tears -->
+                    <circle cx="72" cy="100" r="3" fill="#87CEEB" opacity="0.7"/>
+                    <circle cx="128" cy="100" r="3" fill="#87CEEB" opacity="0.7"/>
+                `;
+            }
+            
+            return svg;
+        }
+
+        // Track cursor position for cat reactions
+        let cursorPosition = { x: 0, y: 0 };
+        
+        function startCursorTracking() {
+            document.addEventListener('mousemove', (e) => {
+                if (!isValentineQuestionActive) return;
+                
+                cursorPosition = { x: e.clientX, y: e.clientY };
+                
+                // Get button positions
+                const yesBtn = document.getElementById('yesBtn');
+                const noBtn = document.getElementById('runaway-btn');
+                
+                if (yesBtn && noBtn) {
+                    const yesRect = yesBtn.getBoundingClientRect();
+                    const noRect = noBtn.getBoundingClientRect();
+                    
+                    // Calculate distance to buttons
+                    const distanceToYes = Math.hypot(
+                        cursorPosition.x - (yesRect.left + yesRect.width/2),
+                        cursorPosition.y - (yesRect.top + yesRect.height/2)
+                    );
+                    
+                    const distanceToNo = Math.hypot(
+                        cursorPosition.x - (noRect.left + noRect.width/2),
+                        cursorPosition.y - (noRect.top + noRect.height/2)
+                    );
+                    
+                    // Update cat reactions
+                    updateCatReactions(distanceToYes, distanceToNo);
+                }
+            });
+        }
+
+        // Update cat reactions based on cursor proximity
+        function updateCatReactions(distanceToYes, distanceToNo) {
+            cats.forEach((cat, index) => {
+                if (cat.isHappy) {
+                    // Happy cats react when cursor is near Yes button
+                    const proximityToYes = Math.max(0, 1 - (distanceToYes / 300));
+                    
+                    if (proximityToYes > 0.5) {
+                        cat.container.style.animation = 'happyDance 0.6s infinite';
+                        cat.container.style.transform = `scale(${1 + proximityToYes * 0.2})`;
+                    } else {
+                        cat.container.style.animation = 'none';
+                        cat.container.style.transform = 'scale(1)';
+                    }
+                } else {
+                    // Sad cats react when cursor is near No button
+                    const proximityToNo = Math.max(0, 1 - (distanceToNo / 250));
+                    
+                    if (proximityToNo > 0.4) {
+                        cat.container.style.animation = 'sadShake 0.4s infinite';
+                        cat.container.style.transform = `scale(${0.9 - proximityToNo * 0.1})`;
+                    } else {
+                        cat.container.style.animation = 'none';
+                        cat.container.style.transform = 'scale(1)';
+                    }
+                }
+            });
+        }
+
+        // Runaway button that literally runs away
+        function initRunawayButton() {
+            const runawayBtn = document.getElementById('runaway-btn');
+            
+            // Make button completely unclickable
+            runawayBtn.onclick = null;
+            runawayBtn.removeAttribute('onclick');
+            runawayBtn.disabled = true;
+            runawayBtn.style.pointerEvents = 'none';
+            
+            // Set initial position
+            noButtonPos.x = window.innerWidth / 2 - runawayBtn.offsetWidth / 2;
+            noButtonPos.y = window.innerHeight / 2 + 80;
+            
+            runawayBtn.style.left = noButtonPos.x + 'px';
+            runawayBtn.style.top = noButtonPos.y + 'px';
+            
+            // High-frequency cursor tracking
+            let lastUpdateTime = 0;
+            const updateInterval = 50;
+            
+            document.addEventListener('mousemove', (e) => {
+                const now = Date.now();
+                if (now - lastUpdateTime < updateInterval) return;
+                
+                lastUpdateTime = now;
+                updateNoButtonPosition(e.clientX, e.clientY, runawayBtn);
+            });
+            
+            // Random panic movements
+            setInterval(() => {
+                if (isValentineQuestionActive && Math.random() > 0.7) {
+                    const randomX = Math.random() * (window.innerWidth - runawayBtn.offsetWidth);
+                    const randomY = Math.random() * (window.innerHeight - runawayBtn.offsetHeight * 2);
+                    
+                    runawayBtn.style.transition = 'left 0.3s ease-out, top 0.3s ease-out';
+                    runawayBtn.style.left = randomX + 'px';
+                    runawayBtn.style.top = randomY + 'px';
+                    
+                    noButtonPos.x = randomX;
+                    noButtonPos.y = randomY;
+                    
+                    setTimeout(() => {
+                        runawayBtn.style.transition = 'left 0.08s, top 0.08s';
+                    }, 300);
+                }
+            }, 600);
+        }
+
+        function updateNoButtonPosition(cursorX, cursorY, btn) {
+            const btnWidth = btn.offsetWidth;
+            const btnHeight = btn.offsetHeight;
+            
+            const btnCenterX = noButtonPos.x + btnWidth / 2;
+            const btnCenterY = noButtonPos.y + btnHeight / 2;
+            
+            const distance = Math.hypot(
+                cursorX - btnCenterX,
+                cursorY - btnCenterY
+            );
+            
+            const triggerDistance = 100;
+            
+            if (distance < triggerDistance) {
+                const angle = Math.atan2(btnCenterY - cursorY, btnCenterX - cursorX);
+                
+                const closeness = Math.max(0, 1 - (distance / triggerDistance));
+                const moveSpeed = 20 + (closeness * 60);
+                
+                let newX = noButtonPos.x + Math.cos(angle) * moveSpeed;
+                let newY = noButtonPos.y + Math.sin(angle) * moveSpeed;
+                
+                const padding = 10;
+                newX = Math.max(padding, Math.min(newX, window.innerWidth - btnWidth - padding));
+                newY = Math.max(padding, Math.min(newY, window.innerHeight - btnHeight - padding));
+                
+                noButtonPos.x = newX;
+                noButtonPos.y = newY;
+                
+                btn.style.left = newX + 'px';
+                btn.style.top = newY + 'px';
+                
+                if (Math.random() > 0.6) {
+                    createChaseEffect(cursorX, cursorY);
+                }
+            }
+        }
+
+        function createChaseEffect(x, y) {
+            const effect = document.createElement('div');
+            effect.className = 'chase-effect';
+            effect.style.left = (x - 15) + 'px';
+            effect.style.top = (y - 15) + 'px';
+            document.body.appendChild(effect);
+            
+            setTimeout(() => {
+                if (effect.parentNode) {
+                    effect.parentNode.removeChild(effect);
+                }
+            }, 800);
+        }
+
+        function yesAnswer() {
+            isValentineQuestionActive = false;
+            document.getElementById('valentineSection').style.display = 'none';
+            document.getElementById('yesAnswerSection').style.display = 'block';
+            
+            // Make all cats happy
+            cats.forEach(cat => {
+                cat.container.style.animation = 'happyDance 0.8s infinite';
+                cat.svg.innerHTML = createCatSVG(true).innerHTML;
+            });
+            
+            // Play celebration music
+            playSong(0);
+            
+            // Create lots of hearts
+            createHearts(50);
+            
+            // Keep creating hearts
+            const heartInterval = setInterval(() => {
+                createHearts(5);
+            }, 600);
+            
+            // Stop after 12 seconds
+            setTimeout(() => {
+                clearInterval(heartInterval);
+            }, 12000);
+        }
+
+        function createHearts(count, x = null, y = null) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                
+                if (x === null || y === null) {
+                    x = Math.random() * window.innerWidth;
+                    y = window.innerHeight;
+                }
+                
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.fontSize = (15 + Math.random() * 25) + 'px';
+                
+                const colors = ['#ff6b8b', '#74b9ff', '#a29bfe', '#fd79a8', '#ffeaa7'];
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                
+                const duration = 2 + Math.random() * 3;
+                heart.style.animation = `floatUp ${duration}s forwards`;
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, duration * 1000);
+            }
+        }
+
+        // Create initial hearts
+        window.addEventListener('load', () => {
+            createHearts(10);
+            
+            setInterval(() => {
+                if (!isValentineQuestionActive) {
+                    createHearts(2);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
